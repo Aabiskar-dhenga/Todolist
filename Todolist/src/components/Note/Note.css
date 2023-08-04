@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.appContainer{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 255, 0.493);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    height: 80vh;
+    width: 30vw;
+    border-radius: 24px;
+    gap: 1.25rem;
+
+}
+.inputWrapper{
+    height: 60px;
+    width: 100%;
+    margin: 0 12px;
+    display: flex;
+    gap: 2rem;
+}
+.headingTitle{
+    margin-top: 12px;
+    color: black;
+    text-align: center;
+}
+
+.inputBox{
+    height: 100%;
+    width: 300px;
+    border-radius: 24px;
+    padding-left: 12px;
+}
+.deleteBtn{
+    height: 100%;
+    width: 122px;
+    border-radius: 24px;
+}
+
+.listingItems{
+    height: 400px;
+    width: 100%;
+    background-color: aqua;
+    overflow-y: scroll;
+}
