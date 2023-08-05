@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Note.css";
+import { MdDelete } from "react-icons/Md";
 
 const Note = () => {
   let [dataArray, setdataArray] = useState([]);
@@ -27,7 +28,7 @@ const Note = () => {
   return (
     <div className="appContainer">
       <div className="container">
-        <h1 className="headingTitle">Note</h1>
+        <h1 className="headingTitle">To Do List</h1>
         <div className="inputWrapper">
           <input
             className="inputBox"
@@ -35,28 +36,32 @@ const Note = () => {
             placeholder="Enter the note"
             type="text"
           />
-          <button value={note} onClick={handleAdd} className="deleteBtn">
+          <button value={note} onClick={handleAdd} className="addBtn">
             Add
           </button>
         </div>
-        <div className="listingItems">
-          <ul>
+        <div className="listingItemsWrapper">
+          <ul className="listingItems">
             {dataArray.map((item) => {
               return (
-                <li>
-                  {item.note}
+                <li className="listedItems">
+                  <div className="itemWrapper">{item.note}</div>
                   <button
+                    className="deleteBtn"
                     onClick={() => {
                       handleDelete(item.id);
                     }}
                   >
-                    delete
+                    <MdDelete className="deleteIcon" />
                   </button>
                 </li>
               );
             })}
           </ul>
         </div>
+      </div>
+      <div className="footer">
+        <h3>Powered by Abishkar dhenga</h3>
       </div>
     </div>
   );
