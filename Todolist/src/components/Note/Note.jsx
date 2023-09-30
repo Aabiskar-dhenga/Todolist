@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Note.css";
 import { MdDelete } from "react-icons/Md";
+import { PiNotePencilBold } from "react-icons/pi";
 
 const Note = () => {
   let [dataArray, setdataArray] = useState([]);
@@ -11,13 +12,20 @@ const Note = () => {
     console.log(note);
   };
   let handleAdd = () => {
+    if (note === "") {
+      return;
+    }
     let newNote = {
       note,
       id: Math.random(),
     };
-    return setdataArray((prev) => {
+    if (note === " ") {
+      return;
+    }
+    setdataArray((prev) => {
       return [...prev, newNote];
     });
+    setNote("");
   };
   let handleDelete = (id) => {
     let updatedArray = dataArray.filter((prev) => {
@@ -25,6 +33,7 @@ const Note = () => {
     });
     setdataArray(updatedArray);
   };
+
   return (
     <div className="appContainer">
       <div className="container">
@@ -35,6 +44,7 @@ const Note = () => {
             onChange={handleinputChange}
             placeholder="Enter the note"
             type="text"
+            value={note}
           />
           <button value={note} onClick={handleAdd} className="addBtn">
             Add
@@ -45,7 +55,8 @@ const Note = () => {
             {dataArray.map((item) => {
               return (
                 <li className="listedItems">
-                  <div className="itemWrapper">{item.note}</div>
+                  <div className="itemWrapper">{item?.note}</div>
+                  <PiNotePencilBold className="editNote" />
                   <button
                     className="deleteBtn"
                     onClick={() => {
