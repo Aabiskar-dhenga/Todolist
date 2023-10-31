@@ -81,16 +81,14 @@ gap: 2px;
     height: 34px;
     outline: none;
     width: 34px;
+    cursor: pointer;
     background-color:lightblue;
     
     border: none;
 
 }
 
-.deleteBtn{
-    background-color:lightblue;
-        border: none;
-}
+
 .itemWrapper{
     width: 80%;
     padding-left: 12px;

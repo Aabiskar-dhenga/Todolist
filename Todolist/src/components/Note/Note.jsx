@@ -6,22 +6,23 @@ import { PiNotePencilBold } from "react-icons/pi";
 const Note = () => {
   let [dataArray, setdataArray] = useState([]);
   let [note, setNote] = useState("");
+  let [editMode, setEditMode] = useState(null);
 
-  let handleinputChange = (e) => {
-    setNote(e.target.value);
-    console.log(note);
-  };
   let handleAdd = () => {
-    if (note === "") {
+    if (!note) {
+      return;
+    }
+    if (editMode) {
+      Update();
+      setNote("");
+      setEditMode(null);
       return;
     }
     let newNote = {
       note,
       id: Math.random(),
     };
-    if (note === " ") {
-      return;
-    }
+
     setdataArray((prev) => {
       return [...prev, newNote];
     });
@@ -34,6 +35,23 @@ const Note = () => {
     setdataArray(updatedArray);
   };
 
+  let handleEdit = (item) => {
+    setNote(item.note);
+    setEditMode(item);
+  };
+
+  let Update = () => {
+    setdataArray((prev) => {
+      return prev.map((singleItem) => {
+        if (singleItem.note == editMode.note) {
+          return { ...singleItem, note: note };
+        } else {
+          return singleItem;
+        }
+      });
+    });
+  };
+
   return (
     <div className="appContainer">
       <div className="container">
@@ -41,7 +59,9 @@ const Note = () => {
         <div className="inputWrapper">
           <input
             className="inputBox"
-            onChange={handleinputChange}
+            onChange={(e) => {
+              setNote(e.target.value);
+            }}
             placeholder="Enter the note"
             type="text"
             value={note}
@@ -52,22 +72,30 @@ const Note = () => {
         </div>
         <div className="listingItemsWrapper">
           <ul className="listingItems">
-            {dataArray.map((item) => {
-              return (
-                <li className="listedItems">
-                  <div className="itemWrapper">{item?.note}</div>
-                  <PiNotePencilBold className="editNote" />
-                  <button
-                    className="deleteBtn"
-                    onClick={() => {
-                      handleDelete(item.id);
-                    }}
-                  >
-                    <MdDelete className="deleteIcon" />
-                  </button>
-                </li>
-              );
-            })}
+            {dataArray.length == "0" ? (
+              <h1>No Notes</h1>
+            ) : (
+              dataArray.map((item) => {
+                return (
+                  <li className="listedItems">
+                    <div className="itemWrapper">{item?.note}</div>
+                    <PiNotePencilBold
+                      onClick={() => {
+                        handleEdit(item);
+                      }}
+                      className="editNote"
+                    />
+
+                    <MdDelete
+                      onClick={() => {
+                        handleDelete(item.id);
+                      }}
+                      className="deleteIcon"
+                    />
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </div>
