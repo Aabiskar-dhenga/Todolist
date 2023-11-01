@@ -6,16 +6,18 @@ import { PiNotePencilBold } from "react-icons/pi";
 const Note = () => {
   let [dataArray, setdataArray] = useState([]);
   let [note, setNote] = useState("");
-  let [editMode, setEditMode] = useState(null);
+  let [editMode, setEditMode] = useState(false);
+  let [editedText, setEditedText] = useState();
 
   let handleAdd = () => {
+    setEditMode(false);
     if (!note) {
       return;
     }
     if (editMode) {
       Update();
       setNote("");
-      setEditMode(null);
+      // setEditMode(null);
       return;
     }
     let newNote = {
@@ -37,13 +39,14 @@ const Note = () => {
 
   let handleEdit = (item) => {
     setNote(item.note);
-    setEditMode(item);
+    setEditedText(item);
+    setEditMode(true);
   };
 
   let Update = () => {
     setdataArray((prev) => {
       return prev.map((singleItem) => {
-        if (singleItem.note == editMode.note) {
+        if (singleItem.id == editedText.id) {
           return { ...singleItem, note: note };
         } else {
           return singleItem;
@@ -67,7 +70,7 @@ const Note = () => {
             value={note}
           />
           <button value={note} onClick={handleAdd} className="addBtn">
-            Add
+            {editMode ? "Save" : "Add"}
           </button>
         </div>
         <div className="listingItemsWrapper">
