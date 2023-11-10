@@ -58,7 +58,7 @@ const Note = () => {
   return (
     <div className="appContainer">
       <div className="container">
-        <h1 className="headingTitle">To Do List</h1>
+        <h1 className="headingTitle">Notes</h1>
         <div className="inputWrapper">
           <input
             className="inputBox"
