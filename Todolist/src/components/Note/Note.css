@@ -47,6 +47,7 @@
 .addBtn{
     height: 100%;
     width: 122px;
+    cursor: pointer;
     border-radius: 24px;
 }
 

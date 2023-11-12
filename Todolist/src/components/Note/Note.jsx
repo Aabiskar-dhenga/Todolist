@@ -17,7 +17,6 @@ const Note = () => {
     if (editMode) {
       Update();
       setNote("");
-      // setEditMode(null);
       return;
     }
     let newNote = {
