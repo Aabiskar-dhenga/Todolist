@@ -18,7 +18,7 @@
 .container{
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
+    background-color: rgb(162, 98, 14);
     height: 80vh;
     width: 30vw;
     border-radius: 24px;
@@ -26,7 +26,7 @@
 
 }
 .inputWrapper{
-    height: 60px;
+    height: 50px;
     width: 100%;
     margin: 0 12px;
     display: flex;
@@ -34,25 +34,33 @@
 }
 .headingTitle{
     margin-top: 12px;
-    color: black;
+    color: white;
+    letter-spacing: 1px;
     text-align: center;
 }
 
 .inputBox{
     height: 100%;
-    width: 280px;
-    border-radius: 24px;
+    width: 65%;
+    border-radius: 8px;
     padding-left: 12px;
+    border: none;
+    outline: none;
 }
 .addBtn{
     height: 100%;
-    width: 100px;
+    width: 18%;
+   background-color:red;
     cursor: pointer;
-    border-radius: 24px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
 }
 
 .listingItemsWrapper{
-    height: 453px;
+    height:65%;
     width: 100%;
     /* background-color: aqua; */
     overflow-y: scroll;
@@ -68,7 +76,7 @@
 }
 .listedItems{
     height: 44px;
-    width: 222px;
+    width: 73%;
     background-color:lightblue;
     border-radius: 12px ;
     margin-left: 12px;
@@ -79,9 +87,9 @@ gap: 2px;
 
 }
 .deleteIcon{
-    height: 34px;
+    height: 24px;
     outline: none;
-    width: 34px;
+    width: 24px;
     cursor: pointer;
     background-color:lightblue;
     
@@ -103,6 +111,6 @@ gap: 2px;
 
 }
 .editNote{
-    font-size: 34px;
+    font-size: 24px;
     cursor: pointer;
 }
